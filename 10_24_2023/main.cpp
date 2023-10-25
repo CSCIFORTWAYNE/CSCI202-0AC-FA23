@@ -2,6 +2,6 @@
 
 int main()
 {
-    donut d;
+    donut d("none", "None", "NONE");
     return 0;
 }
