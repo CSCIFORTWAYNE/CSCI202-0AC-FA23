@@ -1,0 +1,4 @@
+/home/avenable11/CSCI202-0AC-FA23/10_26_2023/Unit Test/CMakeFiles/student.dir
+/home/avenable11/CSCI202-0AC-FA23/10_26_2023/Unit Test/CMakeFiles/runTests.dir
+/home/avenable11/CSCI202-0AC-FA23/10_26_2023/Unit Test/CMakeFiles/edit_cache.dir
+/home/avenable11/CSCI202-0AC-FA23/10_26_2023/Unit Test/CMakeFiles/rebuild_cache.dir

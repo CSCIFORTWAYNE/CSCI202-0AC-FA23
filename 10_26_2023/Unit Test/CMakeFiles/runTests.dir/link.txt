@@ -1,0 +1,1 @@
+/usr/bin/c++  -Wl,--wrap=main -rdynamic CMakeFiles/runTests.dir/tests.cpp.o -o runTests  -Wl,-rpath,"/home/avenable11/CSCI202-0AC-FA23/10_26_2023/Unit Test" /usr/lib/x86_64-linux-gnu/libgtest.a libstudent.so -lpthread 
