@@ -53,12 +53,15 @@ public:
     static std::map<std::string, toppingType> strToTop;
     static std::map<std::string, icingType> strToIce;
     static std::map<std::string, drizzleType> strToDrizzle;
-    donut(icingType = NOICE, toppingType = NOTOP, drizzleType = NODRIZZLE);
+    // donut(icingType = NOICE, toppingType = NOTOP, drizzleType = NODRIZZLE);
     donut(std::string, std::string, std::string);
-    icingType getIcing();
-    toppingType getTopping();
-    drizzleType getDrizzle();
-    std::string toString();
+    icingType getIcing() const;
+    toppingType getTopping() const;
+    drizzleType getDrizzle() const;
+    std::string toString() const;
+    void setIcing(std::string);
+    void setTopping(std::string);
+    void setDrizzle(std::string);
 
 private:
     toppingType topping;
