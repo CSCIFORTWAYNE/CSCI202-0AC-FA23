@@ -4,6 +4,7 @@
 #include <iostream>
 #include <stdexcept>
 #include "node.h"
+#include "linkedListIterator.h"
 
 template <class type>
 class linkedListType
@@ -23,6 +24,8 @@ public:
     virtual void insert(const type &newInfo) = 0;
     virtual void deleteNode(const type &deleteItem) = 0;
     virtual bool search(const type &searchItem) const = 0;
+    linkedListIterator<type> begin();
+    linkedListIterator<type> end();
 
 protected:
     node<type> *head;
@@ -127,6 +130,20 @@ t *linkedListType<t>::back() const
     if (isEmptyList())
         throw std::out_of_range("Cannout get last item of an empty list");
     return tail->data;
+}
+
+template <class type>
+inline linkedListIterator<type> linkedListType<type>::begin()
+{
+    linkedListIterator<type> temp(head);
+    return temp;
+}
+
+template <class type>
+inline linkedListIterator<type> linkedListType<type>::end()
+{
+    linkedListIterator<type> temp;
+    return temp;
 }
 
 template <class type>
