@@ -47,11 +47,14 @@ linkedListType<type>::linkedListType()
 template <class type>
 inline linkedListType<type>::linkedListType(const linkedListType<type> &otherList)
 {
+    count = 0;
+    head = nullptr;
+    tail = nullptr;
     copyList(otherList);
 }
 
 template <class type>
-inline const linkedListType<type> &linkedListType<type>::operator=(const linkedListType<type> &)
+inline const linkedListType<type> &linkedListType<type>::operator=(const linkedListType<type> &otherList)
 {
     if (this != &otherList) // no self copy
     {
@@ -177,7 +180,7 @@ void linkedListType<type>::copyList(const linkedListType<type> &otherList)
             newNode->link = nullptr;
             tail->link = newNode;
             current = current->link;
-            // move tail
+            tail = newNode;
         }
     }
 }
