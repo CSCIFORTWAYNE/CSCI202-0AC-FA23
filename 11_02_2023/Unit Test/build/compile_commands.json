@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/avenable11/CSCI202-0AC-FA23/11_02_2023/Unit Test/build",
+  "command": "/usr/bin/g++   -g -DGTEST_HAS_PTHREAD=1 -o CMakeFiles/runTest.dir/tests.cpp.o -c \"/home/avenable11/CSCI202-0AC-FA23/11_02_2023/Unit Test/tests.cpp\"",
+  "file": "/home/avenable11/CSCI202-0AC-FA23/11_02_2023/Unit Test/tests.cpp"
+}
+]

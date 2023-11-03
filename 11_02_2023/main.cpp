@@ -8,6 +8,7 @@
 void resetStream();
 void codeGradeLoopFix(std::string errLocation);
 long getBinaryNumber();
+// lecture activity is in the unit test folder
 int main()
 {
     /* long x;
