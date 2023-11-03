@@ -10,9 +10,33 @@
 donut::donut(std::string icing, std::string topping, std::string drizzle)
 {
 
-    setIcing(icing);
-    setTopping(topping);
-    setDrizzle(drizzle);
+    try
+    {
+        setIcing(icing);
+    }
+    catch (stackTrace e)
+    {
+        e.push("donut.cpp 15");
+        throw e;
+    }
+    try
+    {
+        setTopping(topping);
+    }
+    catch (stackTrace e)
+    {
+        e.push("donut.cpp 23");
+        throw e;
+    }
+    try
+    {
+        setDrizzle(drizzle);
+    }
+    catch (stackTrace e)
+    {
+        e.push("donut.cpp 30");
+        throw e;
+    }
 }
 
 std::map<toppingType, std::string> donut::topToStr = {{RAINBOWSPR, "Rainbow"},
@@ -80,7 +104,9 @@ void donut::setIcing(std::string icing)
     }
     else
     {
-        throw std::invalid_argument(icing + " is not a valid icing type!");
+        stackTrace st(icing + " is not a valid icing type!");
+        st.push("donut.cpp 101");
+        throw st;
     }
 }
 void donut::setTopping(std::string topping)
@@ -93,7 +119,9 @@ void donut::setTopping(std::string topping)
     }
     else
     {
-        throw std::invalid_argument(toppingLower + " is not a valid topping type!");
+        stackTrace st(topping + " is not a valid topping type!");
+        st.push("donut.cpp 112");
+        throw st;
     }
 }
 void donut::setDrizzle(std::string drizzle)
@@ -106,7 +134,9 @@ void donut::setDrizzle(std::string drizzle)
     }
     else
     {
-        throw std::invalid_argument(drizzleLower + " is not a valid drizzle type!");
+        stackTrace st(drizzle + " is not a valid drizzle type!");
+        st.push("donut.cpp 127");
+        throw st;
     }
 }
 

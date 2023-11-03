@@ -3,6 +3,7 @@
 #include <cmath>
 #include "arrayStack.h"
 #include "linkedStack.h"
+#include "donut.h"
 
 void resetStream();
 void codeGradeLoopFix(std::string errLocation);
@@ -46,6 +47,15 @@ int main()
     }
     std::cout << copyx << " is " << answer << " in decimal." << std::endl;
  */
+    try
+    {
+        donut d("map", "bacon", "none");
+    }
+    catch (stackTrace e)
+    {
+        std::cout << e.what() << std::endl;
+        std::cout << e.printTrace() << std::endl;
+    }
 
     return 0;
 }

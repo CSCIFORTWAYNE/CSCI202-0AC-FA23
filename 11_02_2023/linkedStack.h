@@ -27,8 +27,6 @@ private:
     int count;
 };
 
-#endif
-
 template <class t>
 inline linkedStack<t>::linkedStack(int max)
 {
@@ -160,3 +158,4 @@ inline void linkedStack<t>::copyStack(const linkedStack<t> &othStack)
         this->maxStackSize = othStack.maxStackSize;
     }
 }
+#endif
