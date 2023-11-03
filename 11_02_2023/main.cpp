@@ -2,13 +2,14 @@
 #include <limits>
 #include <cmath>
 #include "arrayStack.h"
+#include "linkedStack.h"
 
 void resetStream();
 void codeGradeLoopFix(std::string errLocation);
 long getBinaryNumber();
 int main()
 {
-    long x;
+    /* long x;
     long copyx;
     arrayStack<int> binary;
     bool valid = false;
@@ -44,6 +45,7 @@ int main()
         answer += mathStack.pop() * pow(2, count++);
     }
     std::cout << copyx << " is " << answer << " in decimal." << std::endl;
+ */
 
     return 0;
 }
