@@ -77,7 +77,7 @@ inline bool arrayStack<t>::isFullStack() const
 }
 
 template <class t>
-inline void arrayStack<t>::push(const t &)
+inline void arrayStack<t>::push(const t &newItem)
 {
     if (!isFullStack())
     {
@@ -112,7 +112,6 @@ inline t arrayStack<t>::pop()
         delete list[--stackTop];
         return newt;
     }
-    return;
 }
 
 template <class t>
