@@ -11,8 +11,8 @@ public:
     void insert(const Type &newItem);
     void deleteNode(const Type &deleteItem);
     orderedLinkedList(int (*compareFunc)(Type, Type));
-    orderedLinkedList(const orderedLinkedList<Type> &otherList);
-    const orderedLinkedList<Type> &operator=(const orderedLinkedList<Type> &);
+    orderedLinkedList(const orderedLinkedList<Type> &otherList);               // implement for lecture activity
+    const orderedLinkedList<Type> &operator=(const orderedLinkedList<Type> &); // implement for the lecture activity
 
 private:
     int (*compareFunc)(Type, Type);
