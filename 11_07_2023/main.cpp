@@ -1,6 +1,7 @@
 #include <iostream>
 #include "arrayQueue.h"
 #include "linkedQueue.h"
+#include "fakepriorityqueue.h"
 
 int main()
 {
@@ -25,7 +26,7 @@ int main()
     arrayQueue<int> p;
     p = q;
 
-    linkedQueue<int> lq;
+    fakepriorityqueue<int> lq;
     lq.enqueue(1);
     lq.enqueue(2);
     x = lq.dequeue();

@@ -20,7 +20,7 @@ public:
     linkedQueue(const linkedQueue<t> &);
     ~linkedQueue();
 
-private:
+protected:
     node<t> *queueFront;
     node<t> *queueRear;
     void copyQueue(const linkedQueue<t> &);
