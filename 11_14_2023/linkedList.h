@@ -26,6 +26,7 @@ public:
     virtual bool search(const type &searchItem) const = 0;
     linkedListIterator<type> begin();
     linkedListIterator<type> end();
+    linkedListIterator<type> operator[](int index);
 
 protected:
     node<type> *head;
@@ -183,4 +184,14 @@ void linkedListType<type>::copyList(const linkedListType<type> &otherList)
     }
 }
 
+template <class type>
+inline linkedListIterator<type> linkedListType<type>::operator[](int index)
+{
+    node<type> *current = this->head;
+    for (int i = 1; i <= index; i++)
+    {
+        current = current->link;
+    }
+    return linkedListIterator<type>(current);
+}
 #endif
