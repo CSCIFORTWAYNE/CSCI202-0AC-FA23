@@ -204,4 +204,35 @@ void mergeSort(t array[], int begin, int end)
     merge(array, begin, mid, end);
 }
 
+/* template <class t>
+void divideList(linkedListIterator<t> &first1, linkedListIterator<t> *&first2)
+{
+    linkedListIterator<t> middle(first1);
+    linkedListIterator<t> current(middle);
+    ++current;
+    linkedListIterator<t> temp(first1);
+    linkedListIterator<t> nullItr;
+
+    if (first1 == nullItr)
+        first2 = nullItr;
+    else if (++temp == nullItr)
+        first2 = nullItr;
+    else
+    {
+        if (current != nullItr)
+            ++current;
+        while(current != nullItr)
+        {
+            ++middle;
+            ++current;
+            if(current != nullItr)
+            {
+                ++current;
+            }
+        }
+        temp = middle;
+        first2 = ++temp;
+    }
+} */
+
 #endif

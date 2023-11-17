@@ -9,6 +9,12 @@ public:
     void insert(const type &newInfo);
     void deleteNode(const type &deleteItem);
     bool search(const type &searchItem) const;
+    void mergeSort();
+
+private:
+    void recMergeSort(node<type> *&head);
+    void divideList(node<type> *first1, node<type> *&first2);
+    node<type> *mergeList(node<type> *first1, node<type> *first2);
 };
 
 template <class type>
@@ -99,5 +105,109 @@ inline bool unorderedLinkedList<type>::search(const type &searchItem) const
         }
     }
     return found;
+}
+
+template <class type>
+void unorderedLinkedList<type>::mergeSort()
+{
+    recMergeSort(this->head);
+    if (this->head == nullptr)
+        this->tail = nullptr;
+    else
+    {
+        this->tail = this->head;
+        while (this->tail->link != nullptr)
+            this->tail = this->tail->link;
+    }
+}
+
+template <class type>
+void unorderedLinkedList<type>::recMergeSort(node<type> *&head)
+{
+    node<type> *otherHead;
+    if (head != nullptr)
+        if (head->link != nullptr)
+        {
+            divideList(head, otherHead);
+            recMergeSort(head);
+            recMergeSort(otherHead);
+            head = mergeList(head, otherHead);
+        }
+}
+
+template <class type>
+void unorderedLinkedList<type>::divideList(node<type> *first1, node<type> *&first2)
+{
+    node<type> *middle;
+    node<type> *current;
+    if (first1 == nullptr || first1->link == nullptr)
+    {
+        first2 = nullptr;
+    }
+    else
+    {
+        middle = first1;
+        current = first1->link;
+        if (current != nullptr)
+            current = current->link;
+        while (current != nullptr)
+        {
+            middle = middle->link;
+            current = current->link;
+            if (current != nullptr)
+                current = current->link;
+        }
+        first2 = middle->link;
+        middle->link = nullptr;
+    }
+}
+template <class type>
+node<type> *unorderedLinkedList<type>::mergeList(node<type> *first1, node<type> *first2)
+{
+    node<type> *lastSmall;
+    node<type> *newHead;
+    if (first1 == nullptr)
+        return first2;
+    if (first2 == nullptr)
+        reutrn first1;
+    else
+    {
+        if (*(first1->data) < *(first2->data))
+        {
+            newHead = first1;
+            first1 = first1->link;
+            lastSmall = newHead;
+        }
+        else
+        {
+            newHead = first2;
+            first2 = first2->link;
+            lastSmall = newHead;
+        }
+        while (first1 != nullptr && first2 != nullptr)
+        {
+            if (*(first1->data) < *(first2->data))
+            {
+                lastSmall->link = first1;
+                lastSmall = lastSmall->link;
+                first1 = first1->link;
+            }
+            else
+            {
+                lastSmall->link = first2;
+                lastSmall = lastSmall->link;
+                first2 = first2->link;
+            }
+        }
+        if (first1 == nullptr)
+        {
+            lastSmall->link = first2;
+        }
+        else
+        {
+            lastSmall->link = first1;
+        }
+        return newHead;
+    }
 }
 #endif
