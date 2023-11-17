@@ -28,6 +28,8 @@ public:
     int treeLeavesCount(const t &searchItem) const;
     ~binaryTree();
     virtual void insert(const t &insertItem) = 0;
+    virtual bool search(const t &searchItem) const = 0;
+    virtual void deleteNode(const t &deleteItem) = 0;
 
 protected:
     binaryNode<t> *&getRoot();
@@ -74,7 +76,7 @@ binaryTree<t>::binaryTree()
 }
 
 template <class t>
-inline std::string binaryTree<t>::inorderTraversal() const
+std::string binaryTree<t>::inorderTraversal() const
 {
     std::ostringstream out;
     inorder(root, out);
@@ -82,7 +84,7 @@ inline std::string binaryTree<t>::inorderTraversal() const
 }
 
 template <class t>
-inline std::string binaryTree<t>::preorderTraversal() const
+std::string binaryTree<t>::preorderTraversal() const
 {
     std::ostringstream out;
     preorder(root, out);
@@ -90,7 +92,7 @@ inline std::string binaryTree<t>::preorderTraversal() const
 }
 
 template <class t>
-inline std::string binaryTree<t>::postOrderTraversal() const
+std::string binaryTree<t>::postOrderTraversal() const
 {
     std::ostringstream out;
     postorder(root, out);
@@ -98,33 +100,39 @@ inline std::string binaryTree<t>::postOrderTraversal() const
 }
 
 template <class t>
-inline bool binaryTree<t>::isEmpty() const
+bool binaryTree<t>::isEmpty() const
 {
     return root == nullptr;
 }
 
 template <class t>
-inline int binaryTree<t>::treeheight() const
+int binaryTree<t>::treeheight() const
 {
     return height(root);
 }
 
 template <class t>
-inline int binaryTree<t>::treeNodeCount(const t &searchItem) const
+int binaryTree<t>::treeNodeCount(const t &searchItem) const
 {
     return nodeCount(searchItem, root);
 }
 
 template <class t>
-inline int binaryTree<t>::treeLeavesCount(const t &searchItem) const
+int binaryTree<t>::treeLeavesCount(const t &searchItem) const
 {
     return leavesCount(searchItem, root);
 }
 
 template <class t>
-inline binaryTree<t>::~binaryTree()
+binaryTree<t>::~binaryTree()
 {
     destroy(root);
+}
+
+template <class t>
+binaryNode<t> *&binaryTree<t>::getRoot()
+{
+    return root;
 }
 
 template <class t>
@@ -154,9 +162,9 @@ void binaryTree<t>::destroy(binaryNode<t> *&p)
 }
 
 template <class t>
-inline void binaryTree<t>::inorder(binaryNode<t> *p, std::ostringstream &out) const
+void binaryTree<t>::inorder(binaryNode<t> *p, std::ostringstream &out) const
 {
-    if (!p) // p!=nullptr)
+    if (p != nullptr)
     {
         inorder(p->left, out);
         out << *(p->data) << "\n\n";
@@ -165,29 +173,29 @@ inline void binaryTree<t>::inorder(binaryNode<t> *p, std::ostringstream &out) co
 }
 
 template <class t>
-inline void binaryTree<t>::preorder(binaryNode<t> *p, std::ostringstream &out) const
+void binaryTree<t>::preorder(binaryNode<t> *p, std::ostringstream &out) const
 {
     if (p != nullptr)
     {
         out << *(p->data) << "\n\n";
-        preorder(p->left);
-        preorder(p->right);
+        preorder(p->left, out);
+        preorder(p->right, out);
     }
 }
 
 template <class t>
-inline void binaryTree<t>::postorder(binaryNode<t> *p, std::ostringstream &out) const
+void binaryTree<t>::postorder(binaryNode<t> *p, std::ostringstream &out) const
 {
     if (p != nullptr)
     {
-        postorder(p->left);
-        postorder(p->right);
+        postorder(p->left, out);
+        postorder(p->right, out);
         out << *(p->data) << "\n\n";
     }
 }
 
 template <class t>
-inline int binaryTree<t>::height(binaryNode<t> *p) const
+int binaryTree<t>::height(binaryNode<t> *p) const
 {
     if (p != nullptr)
         return max(height(p->left), height(p->right)) + 1;
@@ -195,13 +203,13 @@ inline int binaryTree<t>::height(binaryNode<t> *p) const
 }
 
 template <class t>
-inline int binaryTree<t>::nodeCount(const t &searchItem, binaryNode<t> *p, int count) const
+int binaryTree<t>::nodeCount(const t &searchItem, binaryNode<t> *p, int count) const
 {
     return 0;
 }
 
 template <class t>
-inline int binaryTree<t>::leavesCount(const t &searchItem, binaryNode<t> *p, int count) const
+int binaryTree<t>::leavesCount(const t &searchItem, binaryNode<t> *p, int count) const
 {
     return 0;
 }
