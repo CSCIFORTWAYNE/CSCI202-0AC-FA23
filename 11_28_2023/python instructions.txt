@@ -1,0 +1,20 @@
+https://networkx.org/
+https://matplotlib.org/
+
+sudo apt install python3-pip
+pip install networkx
+pip install matplotlib
+sudo apt-get install python3-tk
+
+These instructions will work on WSL or Ubuntu. 
+For Msys/MinGW (Note these instructions are untested)
+pacman -S mingw-w64-x86_64-python-pip
+pip install networkx
+pip install matplotlib
+pacman -S mingw-w64-x86_64-tk
+
+For mac users 
+https://www.geeksforgeeks.org/how-to-install-pip-in-macos/
+then 
+pip install networkx
+pip install matplotlib

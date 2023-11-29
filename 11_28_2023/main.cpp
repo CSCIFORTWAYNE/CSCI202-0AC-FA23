@@ -5,7 +5,7 @@
 int main()
 {
     graphType g;
-    g.createGraph("graph1.txt");
+    g.createGraph("graph3.txt");
     std::string output = g.printGraph();
     std::ofstream fout("g.txt");
     fout << output;

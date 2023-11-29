@@ -48,16 +48,23 @@ void graphType::clearGraph()
     gSize = 0;
 }
 
+// note: if you use the original output with the python graph render, you will need to remove extra newlines from the end of the file.
+// the digraph output for graphViz doesn't break with extra newlines.
 std::string graphType::printGraph() const
 {
     std::ostringstream out;
+    out << "digraph {"; // comment this line and the nested for loop for the python output
     for (int i = 0; i < gSize; i++)
     {
+        /* original print code works with the python program.
         out << i << " ";
-        graph[i].print(out, " ");
-        out << std::endl;
+        graph[i].print(out);
+        out << std::endl; */
+        for (linkedListIterator<int> graphIt = graph[i].begin(); graphIt != graph[i].end(); ++graphIt)
+            out << i << "->" << *graphIt << ";" << std::endl;
     }
     out << std::endl;
+    out << "}"; // comment this line for the python output.
     return out.str();
 }
 
