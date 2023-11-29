@@ -10,5 +10,10 @@ int main()
     std::ofstream fout("g.txt");
     fout << output;
     std::cout << output;
+    graphType h;
+    h = g;
+    std::cout << h.printGraph();
+    std::cout << g.depthFirstTraversal() << std::endl;
+    std::cout << g.breadthFirstTraversal() << std::endl;
     return 0;
 }
