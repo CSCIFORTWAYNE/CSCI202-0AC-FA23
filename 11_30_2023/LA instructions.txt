@@ -1,0 +1,2 @@
+1. Find the shortest path for all vertexes in Lecture Activity WD graph starting at A. submit a table of the shortest path
+2. Find the minimal spanning tree for Lecture WUD graph. Submit a table of the included edges.

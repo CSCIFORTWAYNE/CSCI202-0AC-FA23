@@ -15,5 +15,8 @@ int main()
     std::cout << h.printGraph();
     std::cout << g.depthFirstTraversal() << std::endl;
     std::cout << g.breadthFirstTraversal() << std::endl;
+    h.addEdge(3, 5);
+    std::cout << h.printGraph();
+    std::cout << g.printGraph();
     return 0;
 }
