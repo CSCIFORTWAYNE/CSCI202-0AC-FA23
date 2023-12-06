@@ -14,6 +14,7 @@ int main()
 {
     int ht[HT_SIZE];
     int collisions = 0;
+    int totalProbe = 0;
     int count = 0;
 
     for (int i = 0; i < HT_SIZE; i++)
@@ -36,12 +37,13 @@ int main()
         {
             std::cout << randNum << " collided with " << ht[hashValue] << std::endl;
             collisions++;
-            while (ht[++hashValue] != -1)
+            while (ht[(++hashValue) % HT_SIZE] != -1)
             {
+                hashValue = hashValue % HT_SIZE;
                 std::cout << randNum << " collided with " << ht[hashValue] << std::endl;
-                collisions++;
+                totalProbe++;
             }
-
+            hashValue = hashValue % HT_SIZE;
             std::cout << randNum << " inserted at " << hashValue << std::endl;
             ht[hashValue] = randNum;
             count++;
@@ -49,6 +51,7 @@ int main()
     }
     std::cout << "There were " << collisions << " collisions." << std::endl;
     std::cout << "There were " << count << " items inserted." << std::endl;
+    std::cout << "There were " << static_cast<double>(totalProbe) / collisions << " average probes per collision." << std::endl;
     return 0;
 }
 
