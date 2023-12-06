@@ -10,3 +10,15 @@ There were 631563 items inserted.
 1000000 numbers mid-square hash (geeks for geeks) 2000000 ht
 There were 213628 collisions.
 There were 786372 items inserted.
+
+1000000 numbers mid-square hash(stack overflow bitwise) 2000000ht
+There were 978811 collisions.
+There were 21189 items inserted.
+
+1000000 numbers modulus hash 2000000 ht
+There were 212960 collisions.
+There were 787040 items inserted.
+
+1000000 numbers folding hash 2000000 ht
+There were 997069 collisions.
+There were 2931 items inserted.

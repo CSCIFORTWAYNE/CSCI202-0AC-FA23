@@ -4,6 +4,7 @@
 #include <unordered_set>
 #include <string>
 #include <cmath>
+#include <vector>
 
 const int HT_SIZE = 2000000;
 
@@ -20,20 +21,30 @@ int main()
         ht[i] = -1;
     }
     std::ifstream nums("exp.txt");
-    while (!nums.eof() && count < HT_SIZE)
+    while (!nums.eof() && count < HT_SIZE / 2)
     {
         int randNum;
         nums >> randNum;
-        if (ht[hashFunc(randNum)] == -1)
+        int hashValue = hashFunc(randNum);
+        if (ht[hashValue] == -1)
         {
-            std::cout << randNum << " inserted at " << hashFunc(randNum) << std::endl;
-            ht[hashFunc(randNum)] = randNum;
+            std::cout << randNum << " inserted at " << hashValue << std::endl;
+            ht[hashValue] = randNum;
             count++;
         }
-        else if (ht[hashFunc(randNum)] != randNum)
+        else if (ht[hashValue] != randNum)
         {
-            std::cout << randNum << " collided with " << ht[hashFunc(randNum)] << std::endl;
+            std::cout << randNum << " collided with " << ht[hashValue] << std::endl;
             collisions++;
+            while (ht[++hashValue] != -1)
+            {
+                std::cout << randNum << " collided with " << ht[hashValue] << std::endl;
+                collisions++;
+            }
+
+            std::cout << randNum << " inserted at " << hashValue << std::endl;
+            ht[hashValue] = randNum;
+            count++;
         }
     }
     std::cout << "There were " << collisions << " collisions." << std::endl;
@@ -43,20 +54,22 @@ int main()
 
 int hashFunc(int key)
 {
-    long long int keySquared = pow(key, 2);
-
-    if (keySquared < 1000000000000000)
+    /* long long int keySquared = pow(key, 2);
+    int location = keySquared & 0x00ffff00 >> 8; */
+    int location = key; // = key;
+    /* std::vector<int> segments;
+    int seg;
+    while (key > 0)
     {
-        keySquared = keySquared / 10000;
-        key = keySquared % HT_SIZE;
+        seg = key % 10000;
+        key = key / 10000;
+        segments.push_back(seg);
     }
-    else
+    for (int i = 0; i < segments.size(); i++)
     {
-        keySquared = keySquared / 10000;
-        key = keySquared % HT_SIZE;
-    }
-
-    return key;
+        location += segments[i];
+    } */
+    return location % HT_SIZE;
 }
 
 void setup()
