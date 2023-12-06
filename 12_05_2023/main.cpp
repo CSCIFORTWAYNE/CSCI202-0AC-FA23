@@ -5,6 +5,7 @@
 #include <string>
 #include <cmath>
 #include <vector>
+#include <functional>
 
 const int HT_SIZE = 2000000;
 
@@ -16,6 +17,8 @@ int main()
     int collisions = 0;
     int totalProbe = 0;
     int count = 0;
+    int pCount = 0;
+    int inc;
 
     for (int i = 0; i < HT_SIZE; i++)
     {
@@ -26,6 +29,8 @@ int main()
     {
         int randNum;
         nums >> randNum;
+        pCount = 0;
+        inc = 1;
         int hashValue = hashFunc(randNum);
         if (ht[hashValue] == -1)
         {
@@ -35,14 +40,19 @@ int main()
         }
         else if (ht[hashValue] != randNum)
         {
+            pCount++;
             std::cout << randNum << " collided with " << ht[hashValue] << std::endl;
             collisions++;
-            while (ht[(++hashValue) % HT_SIZE] != -1)
+            hashValue = (hashValue + inc * inc) % HT_SIZE;
+            while (ht[hashValue] != -1 && pCount < HT_SIZE / 2)
             {
-                hashValue = hashValue % HT_SIZE;
+
                 std::cout << randNum << " collided with " << ht[hashValue] << std::endl;
                 totalProbe++;
+                inc++;
+                hashValue = (hashValue + inc * inc) % HT_SIZE;
             }
+            totalProbe++;
             hashValue = hashValue % HT_SIZE;
             std::cout << randNum << " inserted at " << hashValue << std::endl;
             ht[hashValue] = randNum;
@@ -59,7 +69,7 @@ int hashFunc(int key)
 {
     /* long long int keySquared = pow(key, 2);
     int location = keySquared & 0x00ffff00 >> 8; */
-    int location = key; // = key;
+    // int location = key; // = key;
     /* std::vector<int> segments;
     int seg;
     while (key > 0)
@@ -72,7 +82,10 @@ int hashFunc(int key)
     {
         location += segments[i];
     } */
-    return location % HT_SIZE;
+    // return location % HT_SIZE;
+
+    std::hash<int> intHash;
+    return intHash(key) % HT_SIZE;
 }
 
 void setup()
