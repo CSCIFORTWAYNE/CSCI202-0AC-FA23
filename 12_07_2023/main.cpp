@@ -1,6 +1,7 @@
 #include <iostream>
 #include <openssl/sha.h>
 #include <string>
+#include "blockchain.hpp"
 
 int main()
 {
@@ -30,6 +31,11 @@ int main()
     for (int i = 0; i < SHA256_DIGEST_LENGTH; i++)
         std::cout << static_cast<int>(hash3[i]);
     std::cout << std::endl;
+
+    blockChain bc;
+    bc.insert(message);
+    bc.insert(message2);
+    bc.insert(message3);
 
     return 0;
 }
