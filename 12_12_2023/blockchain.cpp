@@ -1,6 +1,6 @@
 #include "blockchain.hpp"
 
-blockChain::blockChain() //
+blockChain::blockChain() // int // int  // int
 {
     numBlocks = 0;
     // unsigned char hash[SHA256_DIGEST_LENGTH] = {0};
