@@ -114,7 +114,7 @@ void binarySearchTree<t>::deleteFromTree(binaryNode<t> *&p)
     }
     else if (p->rTree == nullptr)
     {
-        emp = p;
+        temp = p;
         p = temp->left;
         delete temp;
     }
